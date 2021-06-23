@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Used to activate the @Autowired annotation in Spring -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.trade.store"/>
+	
+	<bean id="dataSource"
+    class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <property name="driverClassName" value="org.h2.Driver" />
+	    <property name="url" value="jdbc:h2:tcp://localhost/~/testdb" />
+	    <property name="username" value="test" />
+	    <property name="password" value="" />
+	</bean>
+	
+	<bean id="tradeTxnDto_test1"
+    class="com.trade.store.dto.TradeTxnDto">
+	    <property name="tradeId" value="T5" />
+	    <property name="versionNumber" value="1" />
+	    <property name="counterPartyId" value="CP-1" />
+	    <property name="bookId" value="B2" />
+	</bean>
+	
+	<bean id="tradeStoreDto_test1"
+    class="com.trade.store.dto.TradeStoreDto">
+	    <property name="storeId" value="ST4545" />
+	</bean>
+	
+	<bean id="tradeTxnDto_test2"
+    class="com.trade.store.dto.TradeTxnDto">
+	    <property name="tradeId" value="T5" />
+	    <property name="versionNumber" value="1" />
+	    <property name="counterPartyId" value="CP-1" />
+	    <property name="bookId" value="B2" />
+	</bean>
+	
+	<bean id="tradeStoreDto_test2"
+    class="com.trade.store.dto.TradeStoreDto">
+	    <property name="storeId" value="ST1111" />
+	</bean>
+	
+	<bean id="tradeTxnDto_test3"
+    class="com.trade.store.dto.TradeTxnDto">
+	    <property name="tradeId" value="T3" />
+	    <property name="versionNumber" value="1" />
+	    <property name="counterPartyId" value="CP-1" />
+	    <property name="bookId" value="B2" />
+	</bean>
+	
+	<bean id="tradeStoreDto_test3"
+    class="com.trade.store.dto.TradeStoreDto">
+	    <property name="storeId" value="ST1111" />
+	</bean>
+	
+	
+	<bean id="tradeTxnDto_test4"
+    class="com.trade.store.dto.TradeTxnDto">
+	    <property name="tradeId" value="T3" />
+	    <property name="versionNumber" value="3" />
+	    <property name="counterPartyId" value="CP-5" />
+	    <property name="bookId" value="B2-10" />
+	</bean>
+	
+	<bean id="tradeStoreDto_test4"
+    class="com.trade.store.dto.TradeStoreDto">
+	    <property name="storeId" value="ST1111" />
+	</bean>
+	
+	
+	<bean id="tradeTxnDto_test5"
+    class="com.trade.store.dto.TradeTxnDto">
+	    <property name="tradeId" value="T3" />
+	    <property name="versionNumber" value="3" />
+	    <property name="counterPartyId" value="CP-5" />
+	    <property name="bookId" value="B2-10" />
+	</bean>
+	
+	<bean id="tradeStoreDto_test5"
+    class="com.trade.store.dto.TradeStoreDto">
+	    <property name="storeId" value="XYD11SS" />
+	</bean>
+	
+</beans>

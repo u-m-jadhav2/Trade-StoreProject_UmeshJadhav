@@ -1,0 +1,68 @@
+CREATE SCHEMA TRADE_STORE_SCHEMA;
+
+CREATE TABLE TRADE_STORE_SCHEMA.TRADE_STORE(
+    STORE_id VARCHAR2(50),
+    STORE_NAME VARCHAR2(100) NOT NULL,
+	STORE_ADDRESS VARCHAR2(250) NOT NULL,
+	STORE_MOBILE VARCHAR2(20) NOT NULL,
+	STORE_LANDLINE VARCHAR2(20) NOT NULL,
+	STORE_ACTIVE  CHAR(1) NOT NULL,
+	CREATED_DATE DATE NOT NULL,
+	UPDATED_DATE DATE ,
+    PRIMARY KEY(STORE_id)
+);
+
+insert into TRADE_STORE_SCHEMA.TRADE_STORE (STORE_id,STORE_NAME,STORE_ADDRESS,STORE_MOBILE,STORE_LANDLINE,STORE_ACTIVE,CREATED_DATE) 
+values ('ST1111','TRADE STORE Limited Pune','Tower 30, Business Hub, EON, Pune 411028','+91 7843-02-6362','+91 20 4343 23 4343','Y', sysdate);
+
+insert into TRADE_STORE_SCHEMA.TRADE_STORE (STORE_id,STORE_NAME,STORE_ADDRESS,STORE_MOBILE,STORE_LANDLINE,STORE_ACTIVE,CREATED_DATE) 
+values ('ST4545','Global Market Limited Pune','Tower 35, Business Hub, EON, Pune 411028','+91 7030-36-7895','+91 20 8599 23 4121','N', sysdate);
+
+select * from TRADE_STORE_SCHEMA.TRADE_STORE;
+
+=================================================================================================================
+
+CREATE TABLE TRADE_STORE_SCHEMA.TRADE_TXN(
+    TRADE_RowNum NUMBER NOT NULL,
+	TRADE_ID VARCHAR2(50)NOT NULL,
+    VERSION NUMBER NOT NULL,
+    COUNTER_PARTY_ID VARCHAR2(50) NOT NULL,
+	BOOK_ID VARCHAR2(50) NOT NULL,
+	MATURITY_DATE DATE NOT NULL,
+	Expired  CHAR(1) ,
+	STORE_id VARCHAR2(50) NOT NULL,
+	STATUS_BY_STORE CHAR(1) NOT NULL,
+	Comment VARCHAR2(500),
+	CREATED_DATE DATE NOT NULL,
+	UPDATED_DATE DATE,
+    PRIMARY KEY(TRADE_RowNum)
+);
+
+insert into TRADE_STORE_SCHEMA.TRADE_TXN (TRADE_RowNum, TRADE_ID,VERSION,COUNTER_PARTY_ID,BOOK_ID,MATURITY_DATE,Expired,CREATED_DATE, STORE_id, STATUS_BY_STORE, Comment) 
+values ('1','T1','1','CP-1','B1',sysdate,'N', sysdate,'ST1111','A','');
+
+insert into TRADE_STORE_SCHEMA.TRADE_TXN (TRADE_RowNum,TRADE_ID,VERSION,COUNTER_PARTY_ID,BOOK_ID,MATURITY_DATE,Expired,CREATED_DATE, STORE_id, STATUS_BY_STORE, Comment) 
+values ('2','T2','2','CP-2','B1',sysdate+2,'N', sysdate,'ST1111','A','');
+
+insert into TRADE_STORE_SCHEMA.TRADE_TXN (TRADE_RowNum,TRADE_ID,VERSION,COUNTER_PARTY_ID,BOOK_ID,MATURITY_DATE,Expired,CREATED_DATE, STORE_id, STATUS_BY_STORE, Comment)  
+values ('3','T2','1','CP-1','B1',sysdate+2,'N', sysdate,'ST1111','A','');
+
+insert into TRADE_STORE_SCHEMA.TRADE_TXN (TRADE_RowNum,TRADE_ID,VERSION,COUNTER_PARTY_ID,BOOK_ID,MATURITY_DATE,Expired,CREATED_DATE, STORE_id, STATUS_BY_STORE, Comment)  
+values ('4','T3','3','CP-3','B2',sysdate+2,'y', sysdate,'ST1111','A','');
+
+select * from TRADE_STORE_SCHEMA.TRADE_TXN;
+select * from TRADE_STORE_SCHEMA.TRADE_TXN order by trade_rownum desc;
+
+
+=================================================================================================================
+
+CREATE SEQUENCE TradeRowNumSEQ
+  START WITH 1
+  INCREMENT BY 1
+  
+ =================================================================================================================
+  
+drop TABLE TRADE_STORE_SCHEMA.TRADE_STORE;
+drop TABLE TRADE_STORE_SCHEMA.TRADE_TXN;
+
+=============================================

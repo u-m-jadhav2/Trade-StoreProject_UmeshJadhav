@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!--  Development version only -->
+<!--  Any changes for deployment should be made in the build/resources/log4j.xml -->
+
+<log4j:configuration debug="false" xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- BEGIN APPENDER: CONSOLE APPENDER (stdout) -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p %c %x - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="logFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="Threshold" value="debug"/>
+		<param name="File" value="E:\\Tech_work\\eclipse_workspace\\Trade_Store\\TradeStoreProject\\src\\viewLog\\tradeStore.log"/> 
+		<param name="Append" value="true"/>
+		<param name="MaxFileSize" value="4000KB"/>
+		<param name="MaxBackupIndex" value="1"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%c] %x - %m%n"/>
+		</layout>		
+	</appender>
+	
+	<logger name="org.springframework" additivity="false">
+		<level value="warn"/> 
+		<appender-ref ref="console"/>
+		<appender-ref ref="logFile"/>
+	</logger>
+	
+	<logger name="org.apache.commons" additivity="false">
+		<level value="warn"/> 
+		<appender-ref ref="console"/>
+		<appender-ref ref="logFile"/>
+	</logger>	
+
+	<logger name="com.filenet.wcm.api.impl" additivity="false">
+		<level value="error"/> 
+		<appender-ref ref="console"/>
+		<appender-ref ref="logFile"/>
+	</logger>
+	
+	<root>
+		<priority value="info" />
+		<appender-ref ref="console" />
+		<appender-ref ref="logFile" />
+	</root>
+</log4j:configuration>
